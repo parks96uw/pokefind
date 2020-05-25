@@ -2,6 +2,12 @@
   text-align: center;
 }
 
+.poke-card.ui.card {
+  background: rgba(137, 196, 244, 0.5);
+  margin-bottom: 10%;
+  box-shadow: none;
+}
+
 .poke-card.image {
   display: flex;
   justify-content: center;
