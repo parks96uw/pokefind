@@ -77,8 +77,7 @@ class App extends React.Component {
             <div className="ui container">
                 <div><img className="header-image" src={logo} alt="pokemon-search" /></div>
                 <SearchBar onFormSubmit={this.onFormSubmit} />
-                {/* {this.state.selectedCard.name && <SelectedCard selectedCard={this.state.selectedCard} />} */}
-                {this.state.selectedCard && <Card data={this.state.selectedCard} id={this.state.selectedCard.id} />}
+                {this.state.selectedCard && <SelectedCard selectedCard={this.state.selectedCard} />}
                 <CardList results={this.state.results} />
                 {this.state.totalCount > 0 && <Pagination
                     className="pagination"

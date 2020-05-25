@@ -20,6 +20,7 @@ const SearchBar = (props) => {
             <form onSubmit={(e) => onFormSubmit(e)}>
                 <div className="search-bar ui input">
                     <input
+                        placeholder="Search for a specific Pokémon..."
                         type="text"
                         value={term}
                         onChange={(e) => onTermSubmit(e)}
