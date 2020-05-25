@@ -1,14 +1,13 @@
 import React from 'react';
-import Pagination from "react-js-pagination";
+import { BrowserRouter, Route } from 'react-router-dom';
 
-import CardList from './CardList/CardList';
-import SearchBar from './SearchBar/SearchBar';
-import SelectedCard from './SelectedCard/SelectedCard';
-import Card from './Card/Card';
+import Header from './Header/Header';
+import Browse from './Browse/Browse';
+import Search from './Search/Search';
+
 import { getSearchData, getPagedData } from '../api/';
 
 import './App.css';
-import logo from './images/PokeFind.png';
 
 class App extends React.Component {
     state = {
@@ -30,18 +29,6 @@ class App extends React.Component {
             return;
         }
         console.log(response.data.data);
-        // const data = response.data.data;
-        // const name = data.name.charAt(0).toUpperCase() + data.name.slice(1);
-        // this.setState({
-        //     term,
-        //     selectedCard: {
-        //         name,
-        //         back_default: data.sprites.back_default,
-        //         front_default: data.sprites.front_default,
-        //         back_shiny: data.sprites.back_shiny,
-        //         front_shiny: data.sprites.front_shiny
-        //     }
-        // });
 
         this.setState({
             selectedCard: {
@@ -75,20 +62,29 @@ class App extends React.Component {
     render() {
         return (
             <div className="ui container">
-                <div><img className="header-image" src={logo} alt="pokemon-search" /></div>
-                <SearchBar onFormSubmit={this.onFormSubmit} />
-                {this.state.selectedCard && <SelectedCard selectedCard={this.state.selectedCard} />}
-                <CardList results={this.state.results} />
-                {this.state.totalCount > 0 && <Pagination
-                    className="pagination"
-                    activePage={this.state.activePage}
-                    itemsCountPerPage={this.state.itemsPerPage}
-                    totalItemsCount={this.state.totalCount}
-                    pageRangeDisplayed={5}
-                    itemClass="page-item"
-                    linkClass="page-link"
-                    onChange={this.handlePageChange.bind(this)}
-                />}
+                <BrowserRouter>
+                    <Header />
+                    <div>
+                        <Route path="/" exact render={(routeProps) => (
+                            <div>Hi</div>
+                        )} />
+                        <Route path="/browse" exact render={(routeProps) => (
+                            <Browse 
+                                results={this.state.results}
+                                activePage={this.state.activePage}
+                                itemsCountPerPage={this.state.itemsPerPage}
+                                totalItemsCount={this.state.totalCount}
+                                onChange={this.handlePageChange.bind(this)}
+                            />
+                        )} />
+                        <Route path="/search" render={(routeProps) => (
+                            <Search
+                                onFormSubmit={this.onFormSubmit}
+                                selectedCard={this.state.selectedCard}
+                            />
+                        )} />
+                    </div>
+                </BrowserRouter>
             </div>
         )
     }
