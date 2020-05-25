@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 
+
 const SearchBar = (props) => {
     const [term, setTerm] = useState('');
 
@@ -16,11 +17,13 @@ const SearchBar = (props) => {
     return (
         <div>
             <form onSubmit={(e) => onFormSubmit(e)}>
-                <input
-                    type="text"
-                    value={term}
-                    onChange={(e) => onTermSubmit(e)}
-                />
+                <div className="ui focus input">
+                    <input
+                        type="text"
+                        value={term}
+                        onChange={(e) => onTermSubmit(e)}
+                    />
+                </div>
             </form>
         </div>
     )
