@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 
+import './SearchBar.css';
 
 const SearchBar = (props) => {
     const [term, setTerm] = useState('');
@@ -15,9 +16,9 @@ const SearchBar = (props) => {
     }
 
     return (
-        <div>
+        <div className="search-container">
             <form onSubmit={(e) => onFormSubmit(e)}>
-                <div className="ui focus input">
+                <div className="search-bar ui input">
                     <input
                         type="text"
                         value={term}

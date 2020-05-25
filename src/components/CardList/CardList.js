@@ -1,6 +1,7 @@
 import React from 'react';
 
 import Card from '../Card/Card';
+import './CardList.css';
 
 const CardList = ( { results }) => {
     const renderedList = results.map(item => {
@@ -13,8 +14,8 @@ const CardList = ( { results }) => {
     });
 
     return ( 
-        <div className="ui segment">
-            <div className="ui five column grid">{renderedList}</div>
+        <div className="cardlist-segment ui segment">
+            <div className="ui four column grid">{renderedList}</div>
         </div>
     )
 }

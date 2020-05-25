@@ -1,0 +1,15 @@
+.search-container {
+  margin: auto;
+  margin-top: 50px;
+}
+
+.search-bar {
+  width: 40%;
+  height: 50px;
+  margin: auto;
+  text-align: center;
+}
+
+.search-bar.ui.input {
+    font-size: 1.5rem;
+}

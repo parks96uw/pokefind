@@ -1,3 +1,13 @@
 .header {
-    text-align: center;
+  text-align: center;
+}
+
+.poke-card.image {
+  display: flex;
+  justify-content: center;
+}
+
+img {
+  max-width: 200px;
+  margin: auto;
 }

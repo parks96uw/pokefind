@@ -4,11 +4,12 @@ import './Card.css';
 
 const Card = ({ data, id }) => {
     const imagePath = `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${id}.png`;
+    const name = data.name.charAt(0).toUpperCase() + data.name.slice(1);
     return (
-        <div class="ui card">
-            <div class="image"><img src={imagePath} /></div>
-            <div class="content">
-                <div class="header">{data.name}</div>
+        <div className="ui card">
+            <div className="poke-card image"><img src={imagePath} alt={name} /></div>
+            <div className="content">
+                <div className="header">{name}</div>
             </div>
         </div>
     )
