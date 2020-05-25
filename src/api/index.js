@@ -22,7 +22,7 @@ export const getPagedData = async (page) => {
     let offSet = 1;
     
     if (page) {
-        offSet = 20*page;
+        offSet = 20*page - 20;
         enteredTerm = `${BASE_URL}?offset=${offSet}&limit=20`;
     }
 

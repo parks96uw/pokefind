@@ -4,12 +4,16 @@
 }
 
 .search-bar {
-  width: 40%;
+  width: auto;
   height: 50px;
   margin: auto;
   text-align: center;
 }
 
 .search-bar.ui.input {
-    font-size: 1.5rem;
+  font-size: 1.5rem;
+}
+
+form {
+    margin: auto;
 }

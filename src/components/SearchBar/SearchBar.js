@@ -8,7 +8,7 @@ const SearchBar = (props) => {
     // Forward the searched term to the parent component
     const onFormSubmit = event => {
         event.preventDefault();
-        if (term) props.onFormSubmit(term);
+        props.onFormSubmit(term);
     }
 
     const onTermSubmit = event => {
