@@ -1,17 +1,27 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import Pagination from "react-js-pagination";
+
+import InfiniteScroll from 'react-infinite-scroller';
 
 import CardList from '../CartList/CardList';
 import './Browse.css';
+import browse from '../images/browseDex.png';
 
-const Browse = ({activePage, results, itemsCountPerPage, totalItemsCount, onChange}) => {
+const Browse = (props) => {
     return (
         <div className="browse ui container">
             <div className="browse-header">
-                <h1 className="ui header">Browse through the Pokémon</h1>
+                <div className="browse-image-container">
+                    <img className="browse-image" src={browse} alt={"pokemon-search"} />
+                </div>
             </div>
-            <CardList results={results} />
-            <Pagination
+            <CardList results={props.results} />
+            {props.totalItemsCount > props.results.length && <button
+                className="browse-load-btn ui button"
+                onClick={() => props.onChange(props.activePage + 1)}>
+                Load More
+            </button>}
+            {/* <Pagination
                 className="pagination"
                 activePage={activePage}
                 itemsCountPerPage={itemsCountPerPage}
@@ -19,8 +29,10 @@ const Browse = ({activePage, results, itemsCountPerPage, totalItemsCount, onChan
                 pageRangeDisplayed={5}
                 itemClass="page-item"
                 linkClass="page-link"
+                hideDisabled={true}
+                hideFirstLastPages={true}
                 onChange={onChange}
-            />
+            /> */}
         </div>
     )
 }

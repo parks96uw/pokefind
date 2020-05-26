@@ -1,5 +1,6 @@
 .search.ui.container {
     padding-top: 100px;
+    text-align: center;
 }
 
 .search-bar.ui.container {
@@ -10,18 +11,20 @@
 .search-bar {
   width: 100%;
   height: 50px;
-  margin: auto;
-  text-align: center;
 }
 
 .search-bar.ui.input {
   font-size: 1.5rem;
 }
 
-form {
-    margin: auto;
-}
-
 .search-header {
     padding-bottom: 25px;
+}
+
+.search-image-container {
+    text-align: center;
+}
+
+.search-image {
+    max-width: 500px;
 }

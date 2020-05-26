@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 
 import SelectedCard from '../SelectedCard/SelectedCard';
 import './Search.css';
+import search from '../images/searchDex.png';
 
 const Search = (props) => {
     const [term, setTerm] = useState('');
@@ -18,8 +19,10 @@ const Search = (props) => {
     return (
         <div className="search ui container">
             <div className="search-header">
-                <h1 className="ui header">Search through the Pokémon</h1>
-            </div>            
+                <div className="search-image-container">
+                    <img className="search-image" src={search} alt={"pokemon-search"}/>
+                </div>
+            </div>          
             <div className="search-bar-container">
                 <form onSubmit={(e) => onFormSubmit(e)}>
                     <div className="search-bar ui input">

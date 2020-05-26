@@ -4,11 +4,8 @@ import './Card.css';
 import pikachuSad from '../images/pikachuSad.png';
 
 const Card = ({ data, id }) => {
-    // console.log(data.name);
-    // TODO: FIX THIS
-    let imagePath = `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${id}.png`;
-
     // TODO: Fix image path for later gen pokemons -- id is wonky for newer gen pokemons
+    let imagePath = `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${id}.png`;
     if (id >= 10091) {
         imagePath = pikachuSad;
     }
@@ -18,7 +15,9 @@ const Card = ({ data, id }) => {
 
     return (
         <div className="poke-card ui card">
-            <div className="poke-card image"><img src={imagePath} alt={name} /></div>
+            <div className="poke-card-container image">
+                <img className="poke-card-image" src={imagePath} alt={name} />
+            </div>
             <div className="content">
                 <div className="header">
                     <div className="meta">#{id}</div>

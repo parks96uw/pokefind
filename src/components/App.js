@@ -4,6 +4,7 @@ import { BrowserRouter, Route } from 'react-router-dom';
 import Header from './Header/Header';
 import Browse from './Browse/Browse';
 import Search from './Search/Search';
+import Home from './Home/Home';
 import { getSearchData, getPagedData } from '../api/';
 import './App.css';
 
@@ -36,10 +37,10 @@ class App extends React.Component {
 
     onPageData = async (page) => {
         const response = await getPagedData(page);
-        // let combined = [...this.state.results].concat(response.data.data.results);
+        let combined = [...this.state.results].concat(response.data.data.results);
         this.setState({
-            results: response.data.data.results,
-            // results: combined,
+            // results: response.data.data.results,
+            results: combined,
             totalCount: response.data.data.count
         });
     }
@@ -60,7 +61,7 @@ class App extends React.Component {
                     <Header />
                     <div>
                         <Route path="/" exact render={(routeProps) => (
-                            <div>Hi</div>
+                            <Home />
                         )} />
                         <Route path="/browse" exact render={(routeProps) => (
                             <Browse

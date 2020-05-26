@@ -7,12 +7,12 @@
   box-shadow: none;
 }
 
-.poke-card.image {
+.poke-card-container.image {
   display: flex;
   justify-content: center;
 }
 
-img {
+.poke-card-image {
   max-width: 200px;
   margin: auto;
 }

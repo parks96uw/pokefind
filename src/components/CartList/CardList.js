@@ -18,7 +18,7 @@ const CardList = ( { results }) => {
         <div className="cardlist-segment ui segment">
             <div className="ui four column grid">{renderedList}</div>
         </div>
-    )
+    ) 
 }
 
 export default CardList;
