@@ -16,8 +16,11 @@ const Search = (props) => {
     }
 
     return (
-        <div>
-            <div className="search-container">
+        <div className="search ui container">
+            <div className="search-header">
+                <h1 className="ui header">Search through the Pokémon</h1>
+            </div>            
+            <div className="search-bar-container">
                 <form onSubmit={(e) => onFormSubmit(e)}>
                     <div className="search-bar ui input">
                         <input

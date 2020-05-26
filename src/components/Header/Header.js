@@ -6,15 +6,16 @@ import { Link } from 'react-router-dom';
 
 const Header = () => {
     return (
-        <div className="poke-header ui secondary pointing menu">
-            <Link to="/" className="item">
-                <img className="header-image" src={logo} alt="pokemon-search" />
-            </Link>
-            <Link to="/search" className="item">Search</Link>
-            <Link to="/browse" className="item">Browse</Link>
-            <div className="right menu">
+        <div className="poke-header ui fixed menu">
+            <div className="header-image-container">
+                <Link to="/">
+                    <img className="header-image" src={logo} alt="pokemon-search" />
+                </Link>
             </div>
-            {/* <img className="header-image" src={logo} alt="pokemon-search" /> */}
+            <div className="right menu">
+                <Link to="/browse" className="item">Browse</Link>
+                <Link to="/search" className="item">Search</Link>
+            </div>
         </div>
     )
 }

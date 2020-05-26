@@ -1,4 +1,8 @@
-.search-container {
+.search.ui.container {
+    padding-top: 100px;
+}
+
+.search-bar.ui.container {
   margin: auto;
   margin-left: 16px;
 }
@@ -16,4 +20,8 @@
 
 form {
     margin: auto;
+}
+
+.search-header {
+    padding-bottom: 25px;
 }

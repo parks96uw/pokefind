@@ -4,9 +4,7 @@ import { BrowserRouter, Route } from 'react-router-dom';
 import Header from './Header/Header';
 import Browse from './Browse/Browse';
 import Search from './Search/Search';
-
 import { getSearchData, getPagedData } from '../api/';
-
 import './App.css';
 
 class App extends React.Component {
@@ -15,7 +13,7 @@ class App extends React.Component {
         results: [],
         selectedCard: null,
         activePage: 1,
-        itemsPerPage: 20,
+        itemsCountPerPage: 20,
         totalCount: 0,
     }
 
@@ -28,8 +26,6 @@ class App extends React.Component {
             this.setState({ term: '', selectedCard: null });
             return;
         }
-        console.log(response.data.data);
-
         this.setState({
             selectedCard: {
                 name: response.data.data.name,
@@ -40,23 +36,21 @@ class App extends React.Component {
 
     onPageData = async (page) => {
         const response = await getPagedData(page);
+        // let combined = [...this.state.results].concat(response.data.data.results);
         this.setState({
             results: response.data.data.results,
+            // results: combined,
             totalCount: response.data.data.count
         });
     }
 
     handlePageChange = (page) => {
-        this.setState({
-            activePage: page
-        });
+        this.setState({ activePage: page });
         this.onPageData(page);
     }
 
-    // DEF: Request for first page of Pokemon
-    //      PAGE == 0 because of API offset == 0
     async componentDidMount() {
-        this.onPageData(this.state.activePage - 1);
+        this.onPageData(this.state.activePage);
     }
 
     render() {
@@ -69,12 +63,12 @@ class App extends React.Component {
                             <div>Hi</div>
                         )} />
                         <Route path="/browse" exact render={(routeProps) => (
-                            <Browse 
+                            <Browse
                                 results={this.state.results}
                                 activePage={this.state.activePage}
-                                itemsCountPerPage={this.state.itemsPerPage}
+                                itemsCountPerPage={this.state.itemsCountPerPage}
                                 totalItemsCount={this.state.totalCount}
-                                onChange={this.handlePageChange.bind(this)}
+                                onChange={this.handlePageChange}
                             />
                         )} />
                         <Route path="/search" render={(routeProps) => (
