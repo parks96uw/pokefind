@@ -1,8 +1,20 @@
-.selected-img {
-    width: 150%;
+.selected-card {
+  margin-left: 16px;
+  margin-top: 30px;
 }
 
-.selected-card {
-    margin-left: 16px;
-    margin-top: 30px;
+.selected-image {
+  width: 200px;
+}
+
+.combat.ui.statistics, .body.ui.statistics {
+  justify-content: center;
+  flex-flow: row;
+  flex-direction: row-reverse;
+  padding-bottom: 50px;;
+}
+
+.statistic {
+    padding: 10px;
+    max-width: 100px;
 }

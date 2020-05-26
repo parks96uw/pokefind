@@ -5,7 +5,6 @@ import './CardList.css';
 
 const CardList = ( { results }) => {
     const renderedList = results.map(item => {
-        // TODO: FIX THIS -- Get the ID of the Pokemon from the URL
         const id = item.url.match(/(?:\/)([0-9]+)/).toString().split(',')[1];
         return (
             <div className="column" key={item.name}>

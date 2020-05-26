@@ -23,23 +23,18 @@ class App extends React.Component {
         const response = await getSearchData(term.toLowerCase(), page);
 
         // Need better error handling -- show pokemon not found
-        if (!response || !term) { // if nothing found
+        if (!response || !term) {
             this.setState({ term: '', selectedCard: null });
             return;
         }
-        this.setState({
-            selectedCard: {
-                name: response.data.data.name,
-                id: response.data.data.id
-            }
-        });
+        console.log(response);
+        this.setState({ selectedCard: response.data.data });
     }
 
     onPageData = async (page) => {
         const response = await getPagedData(page);
         let combined = [...this.state.results].concat(response.data.data.results);
         this.setState({
-            // results: response.data.data.results,
             results: combined,
             totalCount: response.data.data.count
         });
@@ -60,12 +55,9 @@ class App extends React.Component {
                 <BrowserRouter>
                     <Header />
                     <div>
-                        <Route path="/" exact render={(routeProps) => (
-                            <Home />
-                        )} />
+                        <Route path="/" exact component={Home} />
                         <Route path="/browse" exact render={(routeProps) => (
-                            <Browse
-                                results={this.state.results}
+                            <Browse results={this.state.results}
                                 activePage={this.state.activePage}
                                 itemsCountPerPage={this.state.itemsCountPerPage}
                                 totalItemsCount={this.state.totalCount}
@@ -73,9 +65,7 @@ class App extends React.Component {
                             />
                         )} />
                         <Route path="/search" render={(routeProps) => (
-                            <Search
-                                onFormSubmit={this.onFormSubmit}
-                                selectedCard={this.state.selectedCard}
+                            <Search onFormSubmit={this.onFormSubmit} selectedCard={this.state.selectedCard}
                             />
                         )} />
                     </div>

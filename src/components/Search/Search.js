@@ -5,6 +5,7 @@ import './Search.css';
 import search from '../images/searchDex.png';
 
 const Search = (props) => {
+    // Clear data when routed away
     const [term, setTerm] = useState('');
 
     const onFormSubmit = event => {
@@ -20,17 +21,14 @@ const Search = (props) => {
         <div className="search ui container">
             <div className="search-header">
                 <div className="search-image-container">
-                    <img className="search-image" src={search} alt={"pokemon-search"}/>
+                    <img className="search-image" src={search} alt={"pokemon-search"} />
                 </div>
-            </div>          
+            </div>
             <div className="search-bar-container">
                 <form onSubmit={(e) => onFormSubmit(e)}>
                     <div className="search-bar ui input">
-                        <input
-                            placeholder="Search for a specific Pokémon..."
-                            type="text"
-                            value={term}
-                            onChange={(e) => onTermSubmit(e)}
+                        <input placeholder="Search for a specific Pokémon..."
+                            type="text" value={term} onChange={(e) => onTermSubmit(e)}
                         />
                     </div>
                 </form>

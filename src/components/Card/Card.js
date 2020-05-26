@@ -4,7 +4,6 @@ import './Card.css';
 import pikachuSad from '../images/pikachuSad.png';
 
 const Card = ({ data, id }) => {
-    // TODO: Fix image path for later gen pokemons -- id is wonky for newer gen pokemons
     let imagePath = `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${id}.png`;
     if (id >= 10091) {
         imagePath = pikachuSad;

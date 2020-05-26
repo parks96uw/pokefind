@@ -1,11 +1,9 @@
-import React, { useEffect } from 'react';
-import Pagination from "react-js-pagination";
-
-import InfiniteScroll from 'react-infinite-scroller';
+import React from 'react';
+// import Pagination from "react-js-pagination";
 
 import CardList from '../CartList/CardList';
-import './Browse.css';
 import browse from '../images/browseDex.png';
+import './Browse.css';
 
 const Browse = (props) => {
     return (
