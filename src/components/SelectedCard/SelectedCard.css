@@ -1,20 +1,21 @@
 .selected-card {
-  margin-left: 16px;
-  margin-top: 30px;
+  margin-top: 20px;
 }
 
 .selected-image {
   width: 200px;
+  padding: 10px;
 }
 
-.combat.ui.statistics, .body.ui.statistics {
-  justify-content: center;
-  flex-flow: row;
-  flex-direction: row-reverse;
-  padding-bottom: 50px;;
+.selected-card.ui.card {
+  text-align: center;
+  margin: auto;
+  background:rgba(255, 255, 255, 0.5);
+  border: none;
+  box-shadow: none;
+  margin-bottom: 6%;
 }
 
-.statistic {
-    padding: 10px;
-    max-width: 100px;
+.poke-name {
+    text-transform: capitalize;
 }

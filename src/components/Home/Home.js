@@ -9,7 +9,7 @@ const Home = () => {
             <div className="home-image-container">
                 <img className="home-image" src={home} alt={"pokemon-search"}/>
             </div>
-            <label className="home-intro">Explore and lookup your favorite Pokémon!</label>
+            <label className="home-intro">Explore and look up your favorite Pokémon!</label>
         </div>
     )
 }

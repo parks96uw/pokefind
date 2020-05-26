@@ -24,7 +24,7 @@ class App extends React.Component {
 
         // Need better error handling -- show pokemon not found
         if (!response || !term) {
-            this.setState({ term: '', selectedCard: null });
+            this.setState({ term: '', selectedCard: { error: "POKEMON_NOT_FOUND" } });
             return;
         }
         console.log(response);
@@ -51,7 +51,7 @@ class App extends React.Component {
 
     render() {
         return (
-            <div className="ui container">
+            <div className="ui fluid container">
                 <BrowserRouter>
                     <Header />
                     <div>
@@ -65,8 +65,7 @@ class App extends React.Component {
                             />
                         )} />
                         <Route path="/search" render={(routeProps) => (
-                            <Search onFormSubmit={this.onFormSubmit} selectedCard={this.state.selectedCard}
-                            />
+                            <Search onFormSubmit={this.onFormSubmit} selectedCard={this.state.selectedCard} />
                         )} />
                     </div>
                 </BrowserRouter>

@@ -7,7 +7,7 @@ const CardList = ( { results }) => {
     const renderedList = results.map(item => {
         const id = item.url.match(/(?:\/)([0-9]+)/).toString().split(',')[1];
         return (
-            <div className="column" key={item.name}>
+            <div className="four wide column" key={item.name}>
                 <Card data={item} id={id} /> 
             </div>
         )
@@ -15,7 +15,7 @@ const CardList = ( { results }) => {
 
     return ( 
         <div className="cardlist-segment ui segment">
-            <div className="ui four column grid">{renderedList}</div>
+            <div className="ui stackable grid">{renderedList}</div>
         </div>
     ) 
 }

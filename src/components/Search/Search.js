@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 
 import SelectedCard from '../SelectedCard/SelectedCard';
-import './Search.css';
 import search from '../images/searchDex.png';
+import './Search.css';
 
 const Search = (props) => {
     // Clear data when routed away
@@ -27,8 +27,11 @@ const Search = (props) => {
             <div className="search-bar-container">
                 <form onSubmit={(e) => onFormSubmit(e)}>
                     <div className="search-bar ui input">
-                        <input placeholder="Search for a specific Pokémon..."
-                            type="text" value={term} onChange={(e) => onTermSubmit(e)}
+                        <input
+                            placeholder="Search for a specific Pokémon..."
+                            type="text"
+                            value={term}
+                            onChange={(e) => onTermSubmit(e)}
                         />
                     </div>
                 </form>

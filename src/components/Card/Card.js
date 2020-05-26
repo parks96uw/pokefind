@@ -4,18 +4,19 @@ import './Card.css';
 import pikachuSad from '../images/pikachuSad.png';
 
 const Card = ({ data, id }) => {
-    let imagePath = `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${id}.png`;
-    if (id >= 10091) {
-        imagePath = pikachuSad;
-    }
+    let imagePath = `https://pokeres.bastionbot.org/images/pokemon/${id}.png`;
+    const name = data.name.split('-').join(' ');
 
-    // TODO: Find a better place to add this
-    const name = data.name.charAt(0).toUpperCase() + data.name.slice(1);
+    // Image Path is null
+    // Replaces with stock image of sad pikachu
+    const missingImage = (e) => {
+        e.target.src = pikachuSad;
+    }
 
     return (
         <div className="poke-card ui card">
             <div className="poke-card-container image">
-                <img className="poke-card-image" src={imagePath} alt={name} />
+                <img className="poke-card-image" src={imagePath} alt={name} onError={(e) => missingImage(e)} />
             </div>
             <div className="content">
                 <div className="header">

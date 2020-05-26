@@ -6,7 +6,8 @@ const BASE_URL = "https://pokeapi.co/api/v2/pokemon";
 export const getSearchData = async (term) => {
     let enteredTerm = BASE_URL;
     if (term) {
-        enteredTerm = `${BASE_URL}/${term}`;
+        let formattedTerm = term.split(' ').join('-');
+        enteredTerm = `${BASE_URL}/${formattedTerm}`;
     }
 
     try {
