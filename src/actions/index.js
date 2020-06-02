@@ -15,9 +15,10 @@ export const clearPagedPokemon = () => (dispatch) => {
     dispatch({ type: 'CLEAR_POKEMON_PAGED' });
 }
 
+// TODO: FIX THIS
 export const fetchSearchedPokemon = (term) => async dispatch => {
     const response = await getSearchData(term);
-    let error = 'none';
+
     // Need better error handling -- show pokemon not found
     if (!response || !term) {
         dispatch({
