@@ -1,44 +1,65 @@
-import React, { useState } from 'react';
+import React from 'react';
+import { connect } from 'react-redux';
 
+import { fetchSearchedPokemon, clearSearchedPokemon } from '../../actions';
 import SelectedCard from '../SelectedCard/SelectedCard';
 import search from '../images/searchDex.png';
 import './Search.css';
 
-const Search = (props) => {
-    // Clear data when routed away
-    const [term, setTerm] = useState('');
+class Search extends React.Component {
+    state = {
+        searched: ''
+    }
 
-    const onFormSubmit = event => {
+    onFormSubmit = event => {
         event.preventDefault();
-        props.onFormSubmit(term);
+        this.props.fetchSearchedPokemon(this.state.searched);
     }
 
-    const onTermSubmit = event => {
-        setTerm(event.target.value);
+    onTermSubmit = event => {
+        this.setState({ searched: event.target.value });
     }
 
-    return (
-        <div className="search ui container">
-            <div className="search-header">
-                <div className="search-image-container">
-                    <img className="search-image" src={search} alt={"pokemon-search"} />
-                </div>
-            </div>
-            <div className="search-bar-container">
-                <form onSubmit={(e) => onFormSubmit(e)}>
-                    <div className="search-bar ui input">
-                        <input
-                            placeholder="Search for a specific Pokémon..."
-                            type="text"
-                            value={term}
-                            onChange={(e) => onTermSubmit(e)}
-                        />
+    componentWillUnmount() {
+        this.props.clearSearchedPokemon();
+    }
+
+    render() {
+        return (
+            <div className="search ui container">
+                <div className="search-header">
+                    <div className="search-image-container">
+                        <img className="search-image" src={search} alt={"pokemon-search"} />
                     </div>
-                </form>
+                </div>
+                <div className="search-bar-container">
+                    <form onSubmit={(e) => this.onFormSubmit(e)}>
+                        <div className="search-bar ui input">
+                            <input
+                                placeholder="Search for a specific Pokémon..."
+                                type="text"
+                                value={this.state.searched}
+                                onChange={(e) => this.onTermSubmit(e)}
+                            />
+                        </div>
+                    </form>
+                </div>
+                {this.props.searched && <SelectedCard {...this.props}/> }
             </div>
-            {props.selectedCard && <SelectedCard selectedCard={props.selectedCard} />}
-        </div>
-    );
+        );
+
+    }
 }
 
-export default Search;
+const mapStateToProps = (state) => {
+    return {
+        searched: state.searched.searched,
+        id: state.searched.id,
+        weight: state.searched.weight,
+        height: state.searched.height,
+        error: state.searched.error
+    };
+
+}
+
+export default connect(mapStateToProps, { fetchSearchedPokemon, clearSearchedPokemon })(Search);
